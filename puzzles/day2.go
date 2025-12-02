@@ -30,7 +30,7 @@ func hasRepeatingPattern(num string) bool {
 	return false
 }
 
-func sumRepeats(idRange string) uint64 {
+func sumRepeats(idRange string, ch chan uint64) {
 	parts := strings.Split(idRange, "-")
 	lhs, err := strconv.ParseUint(parts[0], 10, 64)
 	rhs, err := strconv.ParseUint(parts[1], 10, 64)
@@ -51,14 +51,20 @@ func sumRepeats(idRange string) uint64 {
 		}
 	}
 
-	return sum
+	ch <- sum
 }
 
 func sumAllRepeats(input string) uint64 {
 	sum := uint64(0)
+	idRanges := strings.Split(input, ",")
+	ch := make(chan uint64)
 
-	for idRange := range strings.SplitSeq(input, ",") {
-		sum += sumRepeats(strings.TrimSpace(idRange))
+	for _, idRange := range idRanges {
+		go sumRepeats(strings.TrimSpace(idRange), ch)
+	}
+
+	for range idRanges {
+		sum += <-ch
 	}
 
 	return sum
