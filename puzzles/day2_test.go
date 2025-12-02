@@ -36,8 +36,10 @@ func TestSumRepeats(t *testing.T) {
 		{"2121212118-2121212124", 2121212121},
 	}
 
+	ch := make(chan uint64)
 	for _, test := range tests {
-		if result := sumRepeats(test.input); result != test.expected {
+		go sumRepeats(test.input, ch)
+		if result := <-ch; result != test.expected {
 			t.Errorf("Expected %d, got %d (%s)", test.expected, result, test.input)
 		}
 	}
