@@ -77,5 +77,5 @@ func Day1() {
 	}
 
 	input := strings.Trim(string(data), "\n ")
-	fmt.Println(getCode(string(input), 50))
+	fmt.Println("Day1", getCode(string(input), 50))
 }
