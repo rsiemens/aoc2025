@@ -2,9 +2,7 @@ package puzzles
 
 import (
 	"fmt"
-	"io"
 	"log"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -66,16 +64,6 @@ func getCode(input string, dial int) int {
 }
 
 func Day1() {
-	file, err := os.Open("day1.txt")
-	if err != nil {
-		log.Fatalf("Failed to open input file")
-	}
-
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatalf("Failed to open input file")
-	}
-
-	input := strings.Trim(string(data), "\n ")
+	input := strings.Trim(loadInput("day1.txt"), "\n ")
 	fmt.Println("Day1", getCode(string(input), 50))
 }
