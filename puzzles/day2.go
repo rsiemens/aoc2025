@@ -1,8 +1,6 @@
 package puzzles
 
 import (
-	"os"
-	"io"
 	"fmt"
 	"log"
 	"strconv"
@@ -71,15 +69,6 @@ func sumAllRepeats(input string) uint64 {
 }
 
 func Day2() {
-	file, err := os.Open("day2.txt")
-	if err != nil {
-		log.Fatalf("Failed to open input file")
-	}
-
-	input, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatalf("Failed to open input file")
-	}
-
-	fmt.Println("Day2", sumAllRepeats(string(input)))
+	input := loadInput("day2.txt")
+	fmt.Println("Day2", sumAllRepeats(input))
 }
