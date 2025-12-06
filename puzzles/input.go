@@ -6,8 +6,8 @@ import (
 	"log"
 )
 
-func loadInput(fpath string) string {
-	file, err := os.Open(fpath)
+func loadInput(fname string) string {
+	file, err := os.Open("inputs/" + fname)
 	if err != nil {
 		log.Fatalf("Failed to open input file")
 	}
