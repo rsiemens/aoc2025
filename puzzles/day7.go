@@ -24,14 +24,24 @@ func (s *splitter) split() (beam, beam) {
 
 type splitterMap map[[2]int]splitter
 
+var cache = make(map[[2]int]int)
+
 func countTimelines(beam_ beam, splitters splitterMap, height int) int {
 	if beam_.y >= height {
 		return 1
 	}
 
-	if splitter, ok := splitters[[2]int{beam_.x, beam_.y}]; ok {
+	coords := [2]int{beam_.x, beam_.y}
+	if splitter, ok := splitters[coords]; ok {
+		if hit, ok := cache[coords]; ok {
+			//fmt.Printf("Cache hit of %d on coords %v\n", hit, coords)
+			return hit
+		}
+
 		lhs, rhs := splitter.split()
-		return countTimelines(lhs, splitters, height) + countTimelines(rhs, splitters, height)
+		result := countTimelines(lhs, splitters, height) + countTimelines(rhs, splitters, height)
+		cache[coords] = result
+		return result
 	}
 
 	// propagate the beam
