@@ -20,4 +20,5 @@ func main() {
 	timed(puzzles.Day4)
 	timed(puzzles.Day5)
 	timed(puzzles.Day6)
+	timed(puzzles.Day7)
 }
