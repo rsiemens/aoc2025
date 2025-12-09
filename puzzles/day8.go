@@ -88,8 +88,7 @@ func makeCartesianPairs(boxes []*junctionBox) []pair {
 	var pairs []pair
 
 	for i := range boxes {
-		for j := range boxes {
-			if i == j { continue }
+		for j := i; j < len(boxes); j++ {
 			boxA := boxes[i]
 			boxB := boxes[j]
 			dist := boxA.distance(boxB)
