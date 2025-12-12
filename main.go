@@ -14,14 +14,15 @@ func timed(fn func()) {
 }
 
 func main() {
-	timed(puzzles.Day1)
-	timed(puzzles.Day2)
-	timed(puzzles.Day3)
-	timed(puzzles.Day4)
-	timed(puzzles.Day5)
-	timed(puzzles.Day6)
-	timed(puzzles.Day7)
-	timed(puzzles.Day8)
+	//timed(puzzles.Day1)
+	//timed(puzzles.Day2)
+	//timed(puzzles.Day3)
+	//timed(puzzles.Day4)
+	//timed(puzzles.Day5)
+	//timed(puzzles.Day6)
+	//timed(puzzles.Day7)
+	//timed(puzzles.Day8)
 	//timed(puzzles.Day9)
-	timed(puzzles.Day10)
+	//timed(puzzles.Day10)
+	timed(puzzles.Day11)
 }
